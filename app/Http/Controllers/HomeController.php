@@ -14,4 +14,8 @@ class HomeController extends Controller
         return view('dashboard', compact('ref_code'));
 
     }
+
+    public function home(){
+        
+    }
 }

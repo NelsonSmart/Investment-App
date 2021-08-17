@@ -16,10 +16,14 @@ Route::get('/clear-cache',function(){
     return 'Cache cleared successfully';
 });
 
+function get_cryptos(){
+    
+}
+
 Route::get('/', function () {
-    $cryptos = CMC::all_cryptos()->status->get();
-    return $cryptos;
-    return view('welcome', compact('cryptos'));
+    // return $cryptos;
+    $cryptos = CMC::all_cryptos();
+    return view('welcome')->with('cryptos', $cryptos);
 
 });
 

@@ -634,7 +634,7 @@
 								<tbody> 
 									@foreach($cryptos as $crypto) 
 										<tr role="row" class="odd">
-											<td class="dtr-control sorting_1" tabindex="0">{{$crypto}}</td>
+											<td class="dtr-control sorting_1" tabindex="0"></td>
 											<td>COIN</td>
 											<td>SYMBOL</td>
 											<td>PRICE</td>
@@ -884,130 +884,6 @@
 
 		</div>
 		<!-- End Pricing Table  -->
-		
-		
-
-		<!-- FAQ -->
-		<div class="bg-gray-extra-light padding-top-bottom-150px">
-		
-			<!-- Container -->
-			<div class="container sm-container-spread">
-				
-				<!-- Row -->
-				<div class="row">
-
-					<!-- Column -->
-					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 center-col margin-auto text-left md-text-center uk-flex uk-flex-middle">
-						
-						<div>
-
-							<!-- Title -->
-							<h3 class="text-weight-700 text-gray-extra-dark text-capitalize">Frequently Asked <span class="text-weight-700">Questions.</span></h3>
-
-							<p class="text-blue">It has survived not onlya galley of type and scrambled five centuries.</p>
-							
-							<!-- Separator -->
-							<div class="separator width-10 bottom-border border-1px border-color-gray-light margin-top-25px margin-bottom-25px sm-margin-bottom-75px md-margin-left-right-auto"></div>
-							
-							<!-- Description -->
-							<p>Slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-							
-							<a class="btn btn-small border-radius-50 btn-blue md-margin-left-right-auto sm-display-table" href="#">Read More</a>
-							
-						</div>
-						
-					</div>
-					<!-- End Column -->
-					
-					
-					<!-- Column -->
-					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 center-col margin-auto text-left md-margin-bottom-75px">
-					
-						<!-- Positioning -->
-						<div class="position-relative width-100">
-						
-							<!-- Title -->
-							<ul data-uk-accordion="collapsible: false">
-							
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-bottom-25px" href="#">There are many Lorem Ipsum available?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">How to get support?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">What kind of payment do you accept?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">It is a long established fact that a reader?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">Randomised words which don't look even?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-				
-								
-							</ul>
-							
-						</div>
-						<!-- End Positioning -->
-				
-					</div>
-					<!-- End Column -->
-					
-					
-				</div>
-				<!-- End Row -->
-		
-			</div>
-			<!-- End Container -->
-
-		</div>
-		<!-- End FAQ -->
 		
 
 		<!-- Contact -->
@@ -1451,6 +1327,30 @@
 		<script src="{{asset('assets/js/custom.js')}}"></script>
 	
 	</body>
+	<script>
+  $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+   /* When click show user */
+    $('body').on('click', '#show-user', function () {
+      var user_id = $(this).data('id');
+      $.get('ajax-crud/' + user_id +'/edit', function (data) {
+         $('#userShowModal').html("User Details");
+          $('#ajax-modal').modal('show');
+          $('#user_id').val(data.id);
+          $('#name').val(data.name);
+          $('#email').val(data.email);
+      })
+   });
+
+  });
+
+</script>
+
 
 
 <!-- Mirrored from templatemilk.com/templates/finani/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Jul 2021 23:25:36 GMT -->

@@ -58,6 +58,8 @@
 	
 	<!-- Main Body -->
 	<body>
+		<div id="google_translate_element"></div>
+		
 		<a href="javascript:" id="return-to-top"><span data-uk-icon="icon: arrow-up; ratio: 1.4" class="text-gray-extra-dark"></span></a>
 	
 		<!-- Homepage -->
@@ -619,42 +621,10 @@
 				<div class="row">
 					<div class="col-sm-12 ">
 						<h3 class="text-weight-700 text-gray-extra-dark text-capitalize">Crypto <span class="text-weight-700">Market Price.</span></h3>
-						<div class="table-responsive">
-							<table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid" aria-describedby="example_info">
-								<thead>
-									<tr role="row">
-										<th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 142.3px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">SN</th>
-										<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 239.3px;" aria-label="Position: activate to sort column ascending">COIN</th>
-										<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 106.3px;" aria-label="Office: activate to sort column ascending">SYMBOL</th>
-										<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 61.3px;" aria-label="Age: activate to sort column ascending">PRICE</th>
-										<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 117.3px;" aria-label="Start date: activate to sort column ascending">MARKET CAP</th>
-										<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 117.3px;" aria-label="Start date: activate to sort column ascending">VOLUME</th>
-									</tr>
-								</thead>
-								<tbody> 
-									@foreach($cryptos as $crypto) 
-										<tr role="row" class="odd">
-											<td class="dtr-control sorting_1" tabindex="0"></td>
-											<td>COIN</td>
-											<td>SYMBOL</td>
-											<td>PRICE</td>
-											<td>MARKET CAP</td>
-											<td>VOLUME</td>
-										</tr>
-									@endforeach
-								</tbody>
-								<tfoot>
-
-									<tr>
-										<th rowspan="1" colspan="1">Coin</th>
-										<th rowspan="1" colspan="1">Email</th>
-										<th rowspan="1" colspan="1">City - State</th>
-										<th rowspan="1" colspan="1">Coin </th>
-										<th rowspan="1" colspan="1">Wallet-Address</th>
-										<td>Payment Status</td>
-								</tfoot>
-							</table>
-						</div>
+						<iframe src="https://widget.coinlib.io/widget?type=full_v2&amp;theme=light&amp;cnt=6&amp;pref_coin_id=1505&amp;graph=yes" scrolling="auto" marginwidth="0" marginheight="0" border="0" style="border:0;margin:0;padding:0;" width="100%" height="409px" frameborder="0"></iframe> 
+						<h3 class="text-weight-700 text-gray-extra-dark text-capitalize">Price Calculator <span class="text-weight-700">Market Price.</span></h3>
+						<iframe src="https://www.cryptonator.com/converter" scrolling="auto" marginwidth="0" marginheight="0" border="0" style="border:0;margin:0;padding:0;" width="100%" height="409px" frameborder="0"></iframe> 
+					
 					</div>
 				</div>
 			</div>
@@ -722,7 +692,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -749,7 +719,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						</div>
 						<!-- End Pricing Table -->
@@ -774,7 +744,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -814,7 +784,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -841,7 +811,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						</div>
 						<!-- End Pricing Table -->
@@ -866,7 +836,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -1326,30 +1296,28 @@
 		<!-- Custom Scripts -->
 		<script src="{{asset('assets/js/custom.js')}}"></script>
 	
+	
+		<!--Start of Tawk.to Script-->
+		<script type="text/javascript">
+		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+		(function(){
+		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+		s1.async=true;
+		s1.src='https://embed.tawk.to/611d2847649e0a0a5cd1c338/1fdcuam56';
+		s1.charset='UTF-8';
+		s1.setAttribute('crossorigin','*');
+		s0.parentNode.insertBefore(s1,s0);
+		})();
+		</script>
+		<!--End of Tawk.to Script-->
+
+		<script type="text/javascript">// <![CDATA[
+		function googleTranslateElementInit() {
+		new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+		}
+		// ]]></script>
+		<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
 	</body>
-	<script>
-  $(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-   /* When click show user */
-    $('body').on('click', '#show-user', function () {
-      var user_id = $(this).data('id');
-      $.get('ajax-crud/' + user_id +'/edit', function (data) {
-         $('#userShowModal').html("User Details");
-          $('#ajax-modal').modal('show');
-          $('#user_id').val(data.id);
-          $('#name').val(data.name);
-          $('#email').val(data.email);
-      })
-   });
-
-  });
-
-</script>
 
 
 

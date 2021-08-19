@@ -15,12 +15,26 @@ class CreateDepositsTable extends Migration
     {
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned();
             $table->string('coin');
+            $table->string('usn');
+            $table->string('investment_type');
+            $table->float('gain');
+            $table->integer('invoice');
             $table->float('amount');
-            $table->string('address');
+            $table->string('currency');
+            $table->string('account_name');
+            $table->text('account_number');
+            $table->string('receipt');
+            $table->string('bank');
+            $table->boolean('paid')->default(0);
+            $table->datetime('date_for_payment');
+            $table->boolean('on_apr')->default(0);
+            $table->string('url');
+            $table->string('ipn');
+            $table->boolean('status')->default(0);
 
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

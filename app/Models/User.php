@@ -51,14 +51,14 @@ class User extends Authenticatable
     ];
 
     public function deposits(){
-        return $this->hasMany(Deposit::class, 'user_id');
+        return $this->hasMany(Deposit::class);
     }
 
     public function withdraws(){
-        return $this->hasMany(Withdraw::class, 'user_id');
+        return $this->hasMany(Withdraw::class);
     }
 
     public function referals(){
-        return $this->hasMany(Referal::class, 'user_id');
+        return $this->hasMany(Referal::class);
     }
 }

@@ -18,14 +18,13 @@ Auth::routes();
 // });
 
 Route::get('/', function () {
-    // return CMC::all_cryptos();
     return view('welcome');
-
 });
 
-Route::get('/test', function(){
-    $user = Referal::all()->where('user_id', '=', auth()->user()->id)->first();
-    return $user->ref_code;
+Route::get('/test', function(Referal $referal){
+    return auth()->user()->referals;
+    $referals = $referal->all()->where('ref_by','=',auth()->user()->referals->ref_code)->get();
+    return $referals;
 
 });
 
@@ -37,13 +36,20 @@ Route::middleware(['auth'])->group(function(){
 
     // Get User profile
     Route::get('/profile', 'UserController@userProfile');
-    Route::post('/profile/edit','UserController@store');
+    Route::post('/profile/edit/{id}','UserController@store');
 
 });
 
 Route::middleware(['admin'])->group(function(){
     Route::get('/users', 'UserController@index');
-    Route::get('/users/{id}', 'UserController@getUser');
+    // Route::get('/users/{id}', 'UserController@getUser');
+
+    // Blocking Users routes
+    Route::get('users/delete/{id}', 'UserController@delete')->name('block_user');
+    Route::get('users/blocked', 'UserController@blocked')->name('blocked');
+    Route::get('users/restore/{id}', 'UserController@unblock')->name('unblock');
+
+    //Payments
     Route::get('admin/view/deposit/settings', 'adminController@deposit_sett')->name('deposit_settings');
     Route::post('admin/update/deposit/settings', 'adminController@deposit')->name('deposit_update');
     Route::get('admin/view/deposit/history','adminController@deposit_history' )->name('history');
@@ -117,4 +123,3 @@ Route::group(
 
 
 Route::get('/deposit', 'DepositController@index');
-

@@ -5,7 +5,7 @@
         <div class="page-title-wrapper">
             <div class="page-title-heading">
                 <div class="page-title-icon">
-                    <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+                    <i class="pe-7s-safe icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>Deposit
                     <div class="page-title-subheading">Hello {{Auth()->user()->name}}, Deposit Funds</div>
@@ -13,11 +13,11 @@
             </div>
         </div>
     </div>      
-                @php
-                
-               $deposit_set = App\deposit_settings::find(1);
-                
-                @endphp
+    @php
+    
+    $deposit_set = App\deposit_settings::find(1);
+    
+    @endphp
       <div class="main-panel">
             <div class="content">
                 <div class="page-inner mt--5">
@@ -53,10 +53,7 @@
                                                         </div>                                                       
                                                     </div>
                                                     @endif
-
-                                                    
-
-                                                     @if($deposit_set->SWITCH_BTC == 1)
+                                                    @if($deposit_set->SWITCH_BTC == 1)
                                                     <div class="col-lg-6 mt-5">                                                                   
                                                         <div class="payment_method" align="center">
                                                             <p>
@@ -109,7 +106,7 @@
                                                                     {{ __('messages.pay_w_bc') }}
                                                                 </a>
                                                                 
-                                                            </div>                                      
+                                                            </div> 
                                                         </div>                                                       
                                                     </div>
                                                     @endif

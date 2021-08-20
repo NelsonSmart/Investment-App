@@ -34,45 +34,6 @@
             </div>
             <div class="divider m-0 d-md-none d-sm-block"></div>
         </div>
-        <!-- <div class="col-sm-6 col-md-4 col-xl-4">
-            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
-                <div class="icon-wrapper rounded-circle">
-                    <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
-                    <i class="lnr-graduation-hat text-white"></i>
-                </div>
-                <div class="widget-chart-content">
-                    <div class="widget-subheading">Invested Dividents</div>
-                    <div class="widget-numbers"><span>9M</span></div>
-                    <div class="widget-description opacity-8 text-focus">
-                        Grow Rate:
-                        <span class="text-info pl-1">
-                            <i class="fa fa-angle-down"></i>
-                            <span class="pl-1">14.1%</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="divider m-0 d-md-none d-sm-block"></div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-xl-4">
-            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
-                <div class="icon-wrapper rounded-circle">
-                    <div class="icon-wrapper-bg opacity-9 bg-success"></div>
-                    <i class="lnr-apartment text-white"></i>
-                </div>
-                <div class="widget-chart-content">
-                    <div class="widget-subheading">Capital Gains</div>
-                    <div class="widget-numbers text-success"><span>$563</span></div>
-                    <div class="widget-description text-focus">
-                        Increased by
-                        <span class="text-warning pl-1">
-                            <i class="fa fa-angle-up"></i>
-                            <span class="pl-1">7.35%</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>
 <div class="row">
@@ -113,7 +74,8 @@
                                                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 106.3px;" aria-label="Office: activate to sort column ascending">City/State</th>
                                                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 61.3px;" aria-label="Age: activate to sort column ascending">Coin</th>
                                                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 117.3px;" aria-label="Start date: activate to sort column ascending">Wallet Address</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 117.3px;" aria-label="Start date: activate to sort column ascending">Payment Status</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 117.3px;" aria-label="Start date: activate to sort column ascending">Expected Payment</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 117.3px;" aria-label="Start date: activate to sort column ascending">Status</th>
                                                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 78.3px;" aria-label="Salary: activate to sort column ascending">Action</th>
                                                     </tr>
                                                 </thead>
@@ -124,27 +86,18 @@
                                                             <td>{{$user->email}}</td>
                                                             <td>{{$user->city}} / {{$user->state}}</td>
                                                             <td>BTC</td>
-                                                            <td>Wallet Address</td>
+                                                            <td>{{$user->wallet_address}}</td>
+                                                            <td>Expected Payment</td>
                                                             <td>Status</td>
                                                             <td>
                                                                 <div role="group" class="btn-group-lg btn-group btn-group-toggle">
-                                                                    <button type="button" class="btn btn-success">Pay Now</button>
-                                                                    <button type="button" class="btn btn-danger">Block</button>
+                                                                    <a href="" class="btn btn-success">Pay Now</a>
+                                                                    <a href="{{route('block_user', $user->id)}}" class="btn btn-danger">Unblock</a>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th rowspan="1" colspan="1">Name</th>
-                                                        <th rowspan="1" colspan="1">Email</th>
-                                                        <th rowspan="1" colspan="1">City - State</th>
-                                                        <th rowspan="1" colspan="1">Coin </th>
-                                                        <th rowspan="1" colspan="1">Wallet-Address</th>
-                                                        <td>Payment Status</td>
-                                                        <th rowspan="1" colspan="1">Action</th></tr>
-                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>

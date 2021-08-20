@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Deposit;
+use App\Models\Referal;
 use App\deposit_settings;
 use CoinbaseCommerce\ApiClient;
 use CoinbaseCommerce\Resources\Charge;
@@ -12,15 +13,17 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-private $st;
+  private $st;
+  private $TITHE = 10;
 
   public function __construct()
   {
-    
     $this->st = deposit_settings::find(1);
   }
-    public function index(){
-        $users = User::all()->where('role', '=', 0);
+
+
+    public function index(User $user, Referal $referal){
+        $users = $user->with(['deposits','referals'])->where('role','<', 1)->get();
         return view('users', compact('users'));
     }
 
@@ -28,20 +31,22 @@ private $st;
         //
     }
 
-    public function store(Request $request){
-        $user = User::findOrfail(auth()->user()->id);
+    public function store($id, Request $request){
+        $user = User::findOrfail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->state = $request->state;
         $user->city = $request->city;
         $user->zip = $request->zip;
         $user->address = $request->address;
+        $user->wallet_address = $request->btc_address;
         $user->save();
 
       return back()->with('status', __('Profile Updated Successfully'));
     }
 
     public function userProfile(){
+
         return view('profile');
     }
     
@@ -66,8 +71,6 @@ private $st;
           'toast_type' => 'err'
       ]);
     }
-
-    
   }
   
   public function pay_drt_amt(Request $req)
@@ -142,8 +145,7 @@ private $st;
 
   public function pay_btc_coinbase_amt(Request $req){
     
-    $user = Auth::User();
-    
+    $user = Auth::User();   
     if(!empty($user))
     {
       try
@@ -335,15 +337,55 @@ private $st;
     
   }
 
-  public function pay_bcm_amt(Request $req)
+  public function pay_bcm_amt(Request $req, Deposit $paymt)
   {   
-    try 
-    {
-      if(!empty(Auth::User()))
-      { 
+    try{
+      
+      if(!empty(Auth::User())){
+
         $user = Auth::User();
 
         ////////////////////////////// Blockchain api ////////////////////////////////////////////////
+
+        $btc_equivalent = file_get_contents(env('CONVERTER_API').$req->amount);
+
+        // Check the amount invested
+        if($req['amount'] >= 100 && $req['amount'] < 1000 ){
+          $investment_type = 'Basic';
+          $gain = $req->amount / $this->TITHE;
+          $payment_date = now()->addDays(3);
+
+        }
+        else if($req['amount'] > 999 && $req['amount'] < 5000){
+          $investment_type = 'Standard';
+          $gain = $req->amount / $this->TITHE;
+          $payment_date = now()->addDays(5);
+
+        }
+        else if($req['amount'] >= 5000 && $req['amount'] <= 10000){
+          $investment_type = 'Premium';
+          $gain = $req->amount / $this->TITHE;
+          $payment_date = now()->addDays(7); 
+        }
+        else if($btc_equivalent >=1){
+          $investment_type = 'Silver';
+          $gain = $req->amount / $this->TITHE;
+          $payment_date = now()->addDays(7); 
+        }
+        else if($btc_equivalent >=3){
+          $investment_type = 'Gold';
+          $gain = $req->amount / $this->TITHE;
+          $payment_date = now()->addDays(7); 
+        }
+        else if($btc_equivalent >=7){
+          $investment_type = 'Diamond';
+          $gain = $req->amount / $this->TITHE;
+          $payment_date = now()->addDays(7); 
+        }
+        else{
+          return back()->withErrors(['error', 'Invalid amount enter amount between $100 - $10000']);
+        }
+
 
         $invoice_id = strtotime(date('Y-m-d')); //'ZzsMLGKe162CfA5EcG6j';
 
@@ -352,18 +394,19 @@ private $st;
         $my_api_key = $this->st->BC_MY_API_KEY;
         $my_callback_url = url('/').'/bcm/cb?invoice_id='.$invoice_id.'&secret='.$bc_secrete;
         $root_url = 'https://api.blockchain.info/v2/receive';
-        $parameters = 'xpub=' .$my_xpub. '&callback=' .urlencode($my_callback_url). '&key=' .$my_api_key;
+        $parameters = 'xpub=' .$my_xpub. '&callback=' .urlencode($my_callback_url).'&key='.$my_api_key;
         $response = file_get_contents($root_url . '?' . $parameters);
         $object = json_decode($response);
         // echo 'Send Payment To : ' . $object->address;
 
-        ///////////////////////////////////  Get BTC price ///////////////////////////////////////
-
-        $bcm_amt = ($req['amount'] * env('CONVERSION')); 
-        $price_btc = file_get_contents("https://www.blockchain.com/tobtc?currency=USD&value=" . $bcm_amt); 
         
 
-        $paymt = new Deposit;
+        $bcm_amt = ($req['amount'] * env('CONVERSION')); 
+
+        // Convert Amount to BTC
+        $price_btc = file_get_contents(env('CONVERTER_API'). $bcm_amt); 
+        
+
         $paymt->user_id = $user->id;
         $paymt->invoice = $invoice_id; 
         $paymt->usn = $user->name;
@@ -374,9 +417,13 @@ private $st;
         $paymt->bank = "BTC";
         $paymt->url =  '';
         $paymt->receipt = '';
+        $paymt->investment_type = $investment_type;
+        $paymt->gain = $gain;
+        $paymt->paid = 0;
         $paymt->status = 0;
         $paymt->on_apr = 0;
         $paymt->pop = '';
+        $paymt->date_for_payment = $payment_date;
 
         $paymt->save();      
 
@@ -385,15 +432,11 @@ private $st;
             'bcm_addr' => $object->address
         ]);
        
-      }
-      else
-      {
+      }else{
         return redirect()->route('login');
       } 
-        
-    } 
-    catch (Exception $e) 
-    {
+    }catch (Exception $e){
+
       return back()->with([
           'toast_msg' => $e->getMessage(),
           'toast_type' => 'err'
@@ -415,7 +458,7 @@ private $st;
 
         $file = $req->file('recPic');
         $path = $user->name."_receipt_id_".$req->recid.".jpg"; //$req->file('u_file')->store('public/post_img');
-        $file->move(public_path('/img/receipts/'), $path);
+        $file->move(public_path('assets/img/receipts/'), $path);
         
         $rec = Deposit::find($req->recid);
         $rec->receipt = $path;
@@ -427,8 +470,7 @@ private $st;
       }
       catch(\Exception $e)
       {
-        
-        return back();;
+        return back();
       }
         
     }
@@ -576,5 +618,23 @@ private $st;
 
   }
   
+  
+  
+    public function delete($id){
+        $user = User::findOrfail($id);
+        $user->delete();
+        return back()->with('status', __('User Blocked'));
+    }
+    
+    public function unblock($id, User $user){
+        $user->onlyTrashed()->find($id)->restore();
+        return back()->with('success', 'User Unblocked');
+    }
+
+    public function blocked(User $user){
+      $users = $user->with(['deposits','referals'])->onlyTrashed()->get();
+        
+        return view('blocked', compact('users'));
+    }
   
 }

@@ -7,6 +7,7 @@ use Binance\API;
 
 class DepositController extends Controller
 {
+    
     public function index(){
 
         $api_key = 'sbtMmBOt1oIFbvy8sy2Wq4FOswpykenDxXlodjhaU6e7ON7rmGSneVNxyxwic9zq';

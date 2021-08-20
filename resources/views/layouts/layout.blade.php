@@ -17,6 +17,12 @@
 
 <link href="{{asset('assets/css/main.d810cf0ae7f39f28f336.css')}}" rel="stylesheet"></head>
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+<link href="//db.onlinewebfonts.com/c/7218a2da5a03f622ca18085806382043?family=Pe-icon-7-stroke" rel="stylesheet" type="text/css"/> 
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
         <div class="app-header header-shadow">
@@ -66,7 +72,7 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                            <img width="30" class="rounded-circle" src="assets/images/avatars/1.png" alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
@@ -222,7 +228,12 @@
                             <li class="app-sidebar__heading">Registered Users</li>
                             <li>
                                 <a href="/users"  class="" >
-                                <i class="metismenu-icon pe-7s-diamond"></i> Users
+                                <i class="metismenu-icon pe-7s-user"></i> Users
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('blocked')}}"  class="" >
+                                <i class="metismenu-icon pe-7s-delete-user"></i> Blocked Users
                                 </a>
                             </li>
                             @endif
@@ -230,7 +241,7 @@
                           @if(auth()->user()->role == 1 || auth()->user()->role == 2)
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i> Deposits
+                                    <i class="metismenu-icon pe-7s-safe"></i> Deposits
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
@@ -250,7 +261,7 @@
                          @else
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i> Deposits
+                                    <i class="metismenu-icon pe-7s-safe"></i> Deposits
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
@@ -265,44 +276,32 @@
                             
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-car"></i> Withdrawal
+                                    <i class="metismenu-icon pe-7s-wallet"></i> Withdrawal
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="elements-buttons-shadow.html" >
+                                        <a href="#" >
                                             <i class="metismenu-icon"></i>Withdraw Fund
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="elements-buttons-shadow.html" >
+                                        <a href="#" >
                                             <i class="metismenu-icon"></i>Withdraw History
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="elements-buttons-icons.html" >
-                                            <i class="metismenu-icon"></i>Earning History
-                                        </a>
-                                    </li>
                                 </ul>
-                            </li>
-
-                            <li class="app-sidebar__heading">Referals</li>
-                            <li>
-                                <a href="/referals">
-                                    <i class="metismenu-icon pe-7s-graph"></i>Referal Link
-                                </a>
                             </li>
                             
                             <li class="app-sidebar__heading">Account</li>
                             <li>
                                 <a href="/profile" >
-                                    <i class="metismenu-icon pe-7s-graph2"></i>Account Setting
+                                    <i class="metismenu-icon pe-7s-config"></i>Account Setting
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="metismenu-icon pe-7s-graph"></i> @lang('Logout')
+                                        document.getElementById('logout-form').submit();"><i class="metismenu-icon pe-7s-power"></i> @lang('Logout')
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}

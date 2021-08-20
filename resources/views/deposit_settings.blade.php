@@ -5,7 +5,7 @@
         <div class="page-title-wrapper">
             <div class="page-title-heading">
                 <div class="page-title-icon">
-                    <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+                    <i class="pe-7s-safe icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>Deposits 
                     <div class="page-title-subheading">Hello {{Auth()->user()->name}}, Welcome to Deposits Settings.</div>
@@ -18,7 +18,7 @@
             <div class="content">
                 @php
                 
-               $deposit_set = App\deposit_settings::find(1);
+                    $deposit_set = App\deposit_settings::find(1);
                 
                 @endphp
                
@@ -53,7 +53,7 @@
                           <div class="row">
                                <div class="col-md-6">
                                   <div class="card mt-5 pd-20" >
-                                      <h3 align="center"><img align="center" src="{{ asset('/img/bitcoin.png')}}" class="img-responsive" style="width: 100px; height: 100px;"></h3>
+                                      <h3 align="center"><img align="center" src="{{ asset('assets/img/bitcoin.png')}}" class="img-responsive" style="width: 100px; height: 100px;"></h3>
                                       <h2 class="text-center">Coinpayment Setup </h2>
                                       <hr>
                                       <div class="form-group">
@@ -101,7 +101,7 @@
                               <div class="col-md-6">
                                 	<div class="card mt-5 pd-20" >
                                 	    <h3 align="center">
-                                	      <img align="center" src="{{ asset('/img/bcimg.png')}}" class="img-responsive" style="width: 100px; height: 100px;">
+                                	      <img align="center" src="{{ asset('assets/img/bcimg.png')}}" class="img-responsive" style="width: 100px; height: 100px;">
                                 	    </h3>
                                 	    <h2 class="text-center">Blockchain payment</h2>
                                 	    <hr>
@@ -132,7 +132,7 @@
                               <div class="col-md-6">
                                 <div class="card mt-5 pd-20" >
                                     <h3 align="center">
-                                      <img align="center" src="{{ asset('/img/coinbase.png')}}" class="img-responsive" style="width: 45%;">
+                                      <img align="center" src="{{ asset('assets/img/coinbase.png')}}" class="img-responsive" style="width: 45%;">
                                     </h3>
                                     <h2 class="text-center">Coinbase Setup</h2>
                                     <hr>

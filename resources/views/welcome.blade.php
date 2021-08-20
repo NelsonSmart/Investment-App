@@ -58,6 +58,8 @@
 	
 	<!-- Main Body -->
 	<body>
+		<div id="google_translate_element"></div>
+		
 		<a href="javascript:" id="return-to-top"><span data-uk-icon="icon: arrow-up; ratio: 1.4" class="text-gray-extra-dark"></span></a>
 	
 		<!-- Homepage -->
@@ -612,136 +614,22 @@
 		</div>
 		<!-- End About -->
 		
-		<!-- Reviews -->
-		<div id="reviews" class="bg-gray-extra-light padding-top-bottom-150px">
-		
+		<!-- Crypto Chart -->
+		<div id="pricing" class="padding-top-bottom-150px">
 			<!-- Container -->
-			<div class="container sm-container-spread">
-			
-				<!-- Row -->
+			<div class="container sm-container-spread">	
 				<div class="row">
-				
-					<!-- Column -->
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 center-col text-center margin-bottom-75px sm-no-margin-bottom">
-
-						<!-- Title -->
-						<h3 class="text-weight-700 text-gray-extra-dark text-capitalize">Some <span class="text-weight-700">Reviews.</span></h3>
-
-						<p class="text-blue margin-bottom-25px">It has survived not onlya galley of type and scrambled five centuries.</p>
-						
-						<!-- Separator -->
-						<div class="separator width-10 center-col bottom-border border-1px border-color-gray-light margin-top-25px margin-bottom-25px md-margin-bottom-75px md-margin-left-right-auto"></div>
-			
-					</div>
-					<!-- End Column -->
+					<div class="col-sm-12 ">
+						<h3 class="text-weight-700 text-gray-extra-dark text-capitalize">Crypto <span class="text-weight-700">Market Price.</span></h3>
+						<iframe src="https://widget.coinlib.io/widget?type=full_v2&amp;theme=light&amp;cnt=6&amp;pref_coin_id=1505&amp;graph=yes" scrolling="auto" marginwidth="0" marginheight="0" border="0" style="border:0;margin:0;padding:0;" width="100%" height="409px" frameborder="0"></iframe> 
+						<h3 class="text-weight-700 text-gray-extra-dark text-capitalize">Price Calculator <span class="text-weight-700">Market Price.</span></h3>
+						<iframe src="https://www.cryptonator.com/converter" scrolling="auto" marginwidth="0" marginheight="0" border="0" style="border:0;margin:0;padding:0;" width="100%" height="409px" frameborder="0"></iframe> 
 					
+					</div>
 				</div>
-				<!-- End Row -->
-				
-				
-	
-				<!-- Row -->
-				<div class="row" data-uk-grid="masonry: true">
-				
-					<!-- Column -->
-					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
-					
-						<!-- Review -->
-						<div class="uk-card uk-card-default uk-card-body text-left no-shadow">
-
-							<span class="text-blue" data-uk-icon="icon: quote-right; ratio: 3"></span>
-							<span class="text-gray-light opacity-4" data-uk-icon="icon: quote-right; ratio: 3"></span>
-							
-							<p class="margin-top-25x">Lorem ipsum dolor sit amet, consectetur adipisicing elit. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed.</p>
-							
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							
-							<img class="margin-top-25px width-75px border-radius-100 margin-right-15px display-block" src="images/avatars/01.jpg" alt="" />
-							
-							<p class="margin-top-20px no-margin-bottom text-gray-extra-dark text-capitalize text-weight-700 text-large">Jack Doe</p>
-							<p class="text-large no-margin-bottom text-weight-300">CEO of X Corp.</p>
-							
-						</div>
-						<!-- End Review -->
-
-					</div>
-					<!-- End Column -->
-					
-					
-					<!-- Column -->
-					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
-					
-						<!-- Review -->
-						<div class="uk-card uk-card-default uk-card-body text-left no-shadow">
-
-							<span class="text-blue" data-uk-icon="icon: quote-right; ratio: 3"></span>
-							<span class="text-gray-light opacity-4" data-uk-icon="icon: quote-right; ratio: 3"></span>
-							
-							<p class="margin-top-25x">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose</p>
-							
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							
-							<img class="margin-top-25px width-75px border-radius-100 margin-right-15px display-block" src="images/avatars/02.jpg" alt="" />
-							
-							<p class="margin-top-20px no-margin-bottom text-gray-extra-dark text-capitalize text-weight-700 text-large">Francis Lewis</p>
-							<p class="text-large no-margin-bottom text-weight-300">Owner of Jobla</p>
-							
-						</div>
-						<!-- End Review -->
-
-					</div>
-					<!-- End Column -->
-					
-					
-					<!-- Column -->
-					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
-					
-						<!-- Review -->
-						<div class="uk-card uk-card-default uk-card-body text-left no-shadow">
-
-							<span class="text-blue" data-uk-icon="icon: quote-right; ratio: 3"></span>
-							<span class="text-gray-light opacity-4" data-uk-icon="icon: quote-right; ratio: 3"></span>
-							
-							<p class="margin-top-25x">Lorem ipsum dolor sit amet, consectetur adipisicing elit. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed.</p>
-							
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							<span class="text-gold" data-uk-icon="icon: star; ratio: 1.5"></span>
-							
-							<img class="margin-top-25px width-75px border-radius-100 margin-right-15px display-block" src="{{asset('assets/images/avatars/03.jpg')}}" alt="" />
-							
-							<p class="margin-top-20px no-margin-bottom text-gray-extra-dark text-capitalize text-weight-700 text-large">Louise Nando</p>
-							<p class="text-large no-margin-bottom text-weight-300">Executive Of Harlon</p>
-							
-						</div>
-						<!-- End Review -->
-
-					</div>
-					<!-- End Column -->
-
-				</div>
-				<!-- End Row -->
-				
-
 			</div>
-			<!-- End Container -->
-
 		</div>
-		<!-- End Reviews -->
-		
-		
-		
-		
+				
 		<!-- Pricing Table -->
 		<div id="pricing" class="padding-top-bottom-150px">
 			
@@ -804,7 +692,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -831,7 +719,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						</div>
 						<!-- End Pricing Table -->
@@ -856,7 +744,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -896,7 +784,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -923,7 +811,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-white border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						</div>
 						<!-- End Pricing Table -->
@@ -948,7 +836,7 @@
 							<!-- End Pricing Table Features -->
 							
 							<!-- Button -->
-							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now</a>
+							<a class="btn btn-small btn-blue border-radius-50 sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Deposit Now</a>
 						
 						
 						</div>
@@ -966,130 +854,6 @@
 
 		</div>
 		<!-- End Pricing Table  -->
-		
-		
-
-		<!-- FAQ -->
-		<div class="bg-gray-extra-light padding-top-bottom-150px">
-		
-			<!-- Container -->
-			<div class="container sm-container-spread">
-				
-				<!-- Row -->
-				<div class="row">
-
-					<!-- Column -->
-					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 center-col margin-auto text-left md-text-center uk-flex uk-flex-middle">
-						
-						<div>
-
-							<!-- Title -->
-							<h3 class="text-weight-700 text-gray-extra-dark text-capitalize">Frequently Asked <span class="text-weight-700">Questions.</span></h3>
-
-							<p class="text-blue">It has survived not onlya galley of type and scrambled five centuries.</p>
-							
-							<!-- Separator -->
-							<div class="separator width-10 bottom-border border-1px border-color-gray-light margin-top-25px margin-bottom-25px sm-margin-bottom-75px md-margin-left-right-auto"></div>
-							
-							<!-- Description -->
-							<p>Slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-							
-							<a class="btn btn-small border-radius-50 btn-blue md-margin-left-right-auto sm-display-table" href="#">Read More</a>
-							
-						</div>
-						
-					</div>
-					<!-- End Column -->
-					
-					
-					<!-- Column -->
-					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 center-col margin-auto text-left md-margin-bottom-75px">
-					
-						<!-- Positioning -->
-						<div class="position-relative width-100">
-						
-							<!-- Title -->
-							<ul data-uk-accordion="collapsible: false">
-							
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-bottom-25px" href="#">There are many Lorem Ipsum available?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">How to get support?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">What kind of payment do you accept?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">It is a long established fact that a reader?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-								
-								
-								<li class="text-weight-400">
-									
-									<a class="uk-accordion-title text-large text-weight-700 text-gray-extra-dark border-bottom border-color-light-gray padding-top-15px padding-bottom-25px" href="#">Randomised words which don't look even?</a>
-									
-									<div class="uk-accordion-content padding-bottom-10px">
-									
-										<p class="no-margin-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-									
-									</div>
-									
-								</li>
-				
-								
-							</ul>
-							
-						</div>
-						<!-- End Positioning -->
-				
-					</div>
-					<!-- End Column -->
-					
-					
-				</div>
-				<!-- End Row -->
-		
-			</div>
-			<!-- End Container -->
-
-		</div>
-		<!-- End FAQ -->
 		
 
 		<!-- Contact -->
@@ -1532,7 +1296,29 @@
 		<!-- Custom Scripts -->
 		<script src="{{asset('assets/js/custom.js')}}"></script>
 	
+	
+		<!--Start of Tawk.to Script-->
+		<script type="text/javascript">
+		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+		(function(){
+		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+		s1.async=true;
+		s1.src='https://embed.tawk.to/611d2847649e0a0a5cd1c338/1fdcuam56';
+		s1.charset='UTF-8';
+		s1.setAttribute('crossorigin','*');
+		s0.parentNode.insertBefore(s1,s0);
+		})();
+		</script>
+		<!--End of Tawk.to Script-->
+
+		<script type="text/javascript">// <![CDATA[
+		function googleTranslateElementInit() {
+		new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+		}
+		// ]]></script>
+		<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
 	</body>
+
 
 
 <!-- Mirrored from templatemilk.com/templates/finani/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Jul 2021 23:25:36 GMT -->

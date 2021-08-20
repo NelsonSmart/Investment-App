@@ -106,7 +106,7 @@
                                                                     {{ __('messages.pay_w_bc') }}
                                                                 </a>
                                                                 
-                                                            </div>                                      
+                                                            </div> 
                                                         </div>                                                       
                                                     </div>
                                                     @endif

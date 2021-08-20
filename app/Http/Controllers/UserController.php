@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Deposit;
+use App\Models\Referal;
 use App\deposit_settings;
 use CoinbaseCommerce\ApiClient;
 use CoinbaseCommerce\Resources\Charge;
@@ -21,8 +22,8 @@ class UserController extends Controller
   }
 
 
-    public function index(){
-        $users = User::all()->where('role', '=', 0);
+    public function index(User $user, Referal $referal){
+        $users = $user->with(['deposits','referals'])->where('role','<', 1)->get();
         return view('users', compact('users'));
     }
 
@@ -30,8 +31,8 @@ class UserController extends Controller
         //
     }
 
-    public function store(Request $request){
-        $user = User::findOrfail(auth()->user()->id);
+    public function store($id, Request $request){
+        $user = User::findOrfail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->state = $request->state;
@@ -45,6 +46,7 @@ class UserController extends Controller
     }
 
     public function userProfile(){
+
         return view('profile');
     }
     
@@ -379,8 +381,9 @@ class UserController extends Controller
           $investment_type = 'Diamond';
           $gain = $req->amount / $this->TITHE;
           $payment_date = now()->addDays(7); 
-        }else{
-          return back()->with('error', 'Invalid amount enter amount between $100 - $10000');
+        }
+        else{
+          return back()->withErrors(['error', 'Invalid amount enter amount between $100 - $10000']);
         }
 
 
@@ -455,7 +458,7 @@ class UserController extends Controller
 
         $file = $req->file('recPic');
         $path = $user->name."_receipt_id_".$req->recid.".jpg"; //$req->file('u_file')->store('public/post_img');
-        $file->move(public_path('/img/receipts/'), $path);
+        $file->move(public_path('assets/img/receipts/'), $path);
         
         $rec = Deposit::find($req->recid);
         $rec->receipt = $path;
@@ -621,6 +624,17 @@ class UserController extends Controller
         $user = User::findOrfail($id);
         $user->delete();
         return back()->with('status', __('User Blocked'));
+    }
+    
+    public function unblock($id, User $user){
+        $user->onlyTrashed()->find($id)->restore();
+        return back()->with('success', 'User Unblocked');
+    }
+
+    public function blocked(User $user){
+      $users = $user->with(['deposits','referals'])->onlyTrashed()->get();
+        
+        return view('blocked', compact('users'));
     }
   
 }

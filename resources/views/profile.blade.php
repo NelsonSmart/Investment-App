@@ -33,7 +33,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <form class='form-group' action='/profile/edit' method='POST' id="info">
+                            <form class='form-group' action='/profile/edit/{{auth()->user()->id}}' method='POST' id="info">
                                 @csrf
                                 <div class="form-wizard-content sw-container tab-content" style="min-height: 310.417px;">
                                     <div id="step-1" class="tab-pane step-content" style="display: block;">
@@ -91,7 +91,7 @@
                                                                 <div class="position-relative form-group">
                                                                     <label for="btc_address">Bitcoin Payment Address</label>
                                                                     <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="paste your bitcoin wallet address here" id="clipboard-source-2" value="" name="btc_address">
+                                                                        <input type="text" class="form-control" placeholder="paste your bitcoin wallet address here" id="clipboard-source-2" value="{{Auth()->user()->wallet_address}}" name="btc_address">
                                                                         <div class="input-group-append">
                                                                             <button type="button" data-clipboard-target="#clipboard-source-2" class="btn btn-primary clipboard-trigger">
                                                                                 <i class="fa fa-copy"></i>
@@ -113,7 +113,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit">submit</button>
                             </form>
                         </div>
                         <div class="divider"></div>

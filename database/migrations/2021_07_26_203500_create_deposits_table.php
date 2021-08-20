@@ -35,6 +35,7 @@ class CreateDepositsTable extends Migration
             $table->boolean('status')->default(0);
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

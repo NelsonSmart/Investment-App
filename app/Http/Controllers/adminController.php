@@ -100,99 +100,54 @@ class adminController extends Controller
     }
     
     public function deposit_history(){
-        
-        return view('user_deposits');
+        $deps = Deposit::all();
+        return view('user_deposits', compact('deps'));
     }
     
-     public function rejectDep($id)
-    {
-        
+    public function rejectDep($id){
 
-            try {
-                $usr = Deposit::find($id);
-
-                $dep_user = User::find($usr->user_id);
-                $amt = $usr->amount;
-
-                if ($usr->on_apr == 1) {
-                    $dep_user->wallet -= $amt;
-                    $dep_user->save();
-                }
-
-                $usr->on_apr = 0;
-                $usr->status = 2;
-                $usr->save();
-
-               
-
-                
-                return back(); //
-
-            } catch (\Exception $e) {
-               
-                return back();
-            }
+        try{
+            $usr = Deposit::find($id);
+            $usr->status = 2;
+            $usr->save();
+            return back()->with('success', 'Deposit Rejected');
+        }catch (\Exception $e){
+            
+            return back()->with('error', 'Deposit Rejected');
+        }
        
     }
 
-    public function approveDep($id)
-    {
-        
-
-            try {
-                $usr = Deposit::find($id);
-                if ($usr->status == 1) {
-                    return back()->with([
-                        'toast_msg' => __('deposit approved'),
-                        'toast_type' => 'err'
-                    ]);
-                }
-
-                $dep_user = User::find($usr->user_id);
-                $amt = $usr->amount;
-
-                if ($usr->on_apr == 0) {
-                    $dep_user->wallet += $amt;
-                    $dep_user->save();
-                }
-                $usr->status = 1;
-                $usr->on_apr = 1;
-                $usr->save();
-                
-                return back()->with([
-                    'toast_msg' => 'successful',
-                    'toast_type' => 'suc'
-                ]);
+    public function approveDep($id){
+        try{
+            $usr = Deposit::find($id);
+            $usr->status = 1;
+            $usr->save();
+            return back()->with('success', 'Deposit Approved');
+            
             } catch (\Exception $e) {
-                return back()->with([
-                    'toast_msg' => 'error failed',
-                    'toast_type' => 'err'
-                ]);
-                return back();
-            }
-        
+                return back()->with('error', $e);
+        }
     }
 
     public function deleteDep($id)
     {
             try {
 
-                $usr = Deposit::find($id);
+                $deposit = Deposit::find($id);
+                $deposit->delete();
+                $deposit->save();
+                return back()->with([
+                    'toast_msg' => __('deposit Deleted'),
+                    'toast_type' => 'err'
+                ]);
 
-                $dep_user = User::find($usr->user_id);
-                $amt = $usr->amount;
-
-                if ($usr->on_apr == 1) {
-                    $dep_user->wallet -= $amt;
-                    $dep_user->save();
-                }
-
-                Deposit::where('id', $id)->delete();              
-                
-                return back();
             } catch (\Exception $e) {
-                
-                return back();
+
+                return back()->with([
+                    'toast_msg' => __($e),
+                    'toast_type' => 'err'
+                ]);
             }
         
     }

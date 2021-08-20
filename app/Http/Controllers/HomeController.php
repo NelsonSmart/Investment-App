@@ -21,7 +21,7 @@ class HomeController extends Controller
         if(auth()->user()->role >=1){
             $total_deposits = $deposit->sum('amount') * env('CONVERSION');
         }else{
-            $total_deposits = auth()->user()->deposits->sum('amount');
+            $total_deposits = auth()->user()->deposits->where('paid',0)->sum('amount');
         }
         return view('dashboard', compact('ref_code','total_deposits'));
 

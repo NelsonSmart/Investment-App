@@ -7,7 +7,7 @@
             <div class="page-title-icon">
                 <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
             </div>
-            <div>List of Users
+            <div>List of Blocked Users
                 <div class="page-title-subheading">These are the list of all users registered in the network</div>
             </div>
         </div>
@@ -91,8 +91,7 @@
                                                             <td>Status</td>
                                                             <td>
                                                                 <div role="group" class="btn-group-lg btn-group btn-group-toggle">
-                                                                    <a href="" class="btn btn-success">Pay Now</a>
-                                                                    <a href="{{route('block_user', $user->id)}}" class="btn btn-danger">Unblock</a>
+                                                                    <a href="{{route('unblock', $user->id)}}" class="btn btn-danger">Unblock</a>
                                                                 </div>
                                                             </td>
                                                         </tr>

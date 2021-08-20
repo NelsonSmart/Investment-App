@@ -228,7 +228,12 @@
                             <li class="app-sidebar__heading">Registered Users</li>
                             <li>
                                 <a href="/users"  class="" >
-                                <i class="metismenu-icon pe-7s-diamond"></i> Users
+                                <i class="metismenu-icon pe-7s-user"></i> Users
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('blocked')}}"  class="" >
+                                <i class="metismenu-icon pe-7s-delete-user"></i> Blocked Users
                                 </a>
                             </li>
                             @endif

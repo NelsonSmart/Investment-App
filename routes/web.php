@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\adminController;
 use \CoinMarketCapApi as CMC;
 use App\Models\User;
-use App\Models\Deposit;
+use App\Models\Referal;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -21,10 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function(Deposit $deposit){
-    $bcm_amt = 45000 * env('CONVERSION');
-    return file_get_contents("https://www.blockchain.com/tobtc?currency=USD&value=" . $bcm_amt); 
-
+Route::get('/test', function(Referal $referal){
+    return auth()->user()->referals;
+    $referals = $referal->all()->where('ref_by','=',auth()->user()->referals->ref_code)->get();
+    return $referals;
 
 });
 
@@ -36,14 +36,20 @@ Route::middleware(['auth'])->group(function(){
 
     // Get User profile
     Route::get('/profile', 'UserController@userProfile');
-    Route::post('/profile/edit','UserController@store');
+    Route::post('/profile/edit/{id}','UserController@store');
 
 });
 
 Route::middleware(['admin'])->group(function(){
     Route::get('/users', 'UserController@index');
-    Route::get('/users/{id}', 'UserController@getUser');
-    Route::post('users/delete', 'UserController@delete');
+    // Route::get('/users/{id}', 'UserController@getUser');
+
+    // Blocking Users routes
+    Route::get('users/delete/{id}', 'UserController@delete')->name('block_user');
+    Route::get('users/blocked', 'UserController@blocked')->name('blocked');
+    Route::get('users/restore/{id}', 'UserController@unblock')->name('unblock');
+
+    //Payments
     Route::get('admin/view/deposit/settings', 'adminController@deposit_sett')->name('deposit_settings');
     Route::post('admin/update/deposit/settings', 'adminController@deposit')->name('deposit_update');
     Route::get('admin/view/deposit/history','adminController@deposit_history' )->name('history');

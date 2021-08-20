@@ -27,7 +27,7 @@
                     <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
                         <div class="icon-wrapper rounded-circle">
                             <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
-                            <i class="lnr-laptop-phone text-dark opacity-8"></i>
+                            <i class="lnr-briefcase text-dark opacity-8"></i>
                         </div>
                         <div class="widget-chart-content">
                             <div class="widget-subheading">Cash Deposits (BTC)</div>
@@ -40,7 +40,7 @@
                     <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
                         <div class="icon-wrapper rounded-circle">
                             <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
-                            <i class="lnr-graduation-hat text-white"></i>
+                            <i class="lnr-link text-white"></i>
                         </div>
                         <div class="widget-chart-content">
                             <div class="widget-subheading">Referal Earning (BTC)</div>

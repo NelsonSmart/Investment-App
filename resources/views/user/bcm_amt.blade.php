@@ -36,9 +36,9 @@
                                                                 </div>
                                                                 <input id="amount" type="number" class="form-control" name="amount" required autofocus>                    
                                                             </div>
-                                                            @if (Session::has('err'))
+                                                            @if (Session::has('error'))
                                                                 <span class="help-block text-danger">
-                                                                    <strong>{{ Session::get('err') }}</strong>
+                                                                    <strong>{{ Session::get('error') }}</strong>
                                                                 </span>
                                                             @endif
                                                         </div>
